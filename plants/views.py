@@ -19,10 +19,23 @@ def needs_watering(next_water) -> bool:
         return False
 
 
+def get_client_ip(request):
+    x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
+    if x_forwarded_for:
+        # If behind a proxy, this will contain a comma-separated list
+        ip = x_forwarded_for.split(",")[0].strip()
+    else:
+        ip = request.META.get("REMOTE_ADDR")
+    return ip
+
+
 # API VIEW DJANGO
 class PlantsView(View):
     def get(self, request, id=0):
-        logger.debug(f"getting watering info... at {timezone.localtime()}")
+
+        logger.debug(
+            f"getting watering info... at {timezone.localtime()} by {get_client_ip(request)}"
+        )
         try:
             plant = Plants.objects.filter(id=id).first()
             watering = needs_watering(plant.next_water)
@@ -45,7 +58,9 @@ class PlantsView(View):
 
     # plants/models.py
     def put(self, request, id=0):
-        logger.debug(f"updating watering info... at {timezone.localtime()}")
+        logger.debug(
+            f"updating watering info... at {timezone.localtime()} by {get_client_ip(request)}"
+        )
         try:
             plant = Plants.objects.filter(id=id).first()
             print(plant)
