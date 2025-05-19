@@ -60,6 +60,7 @@ MIDDLEWARE = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "/static/"
+
 ROOT_URLCONF = "greenhouse.urls"
 
 TEMPLATES = [

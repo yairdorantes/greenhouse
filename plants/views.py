@@ -3,13 +3,13 @@ import json
 from django.utils import timezone
 from django.http import JsonResponse
 from django.views import View
+from loguru import logger
 
 from plants.models import Plants
 
 
 def needs_watering(next_water) -> bool:
     try:
-        print(timezone.localtime(), (next_water))
         if timezone.localtime().date() >= next_water:
             return True
         else:
@@ -22,6 +22,7 @@ def needs_watering(next_water) -> bool:
 # API VIEW DJANGO
 class PlantsView(View):
     def get(self, request, id=0):
+        logger.debug(f"getting watering info... at {timezone.localtime()}")
         try:
             plant = Plants.objects.filter(id=id).first()
             watering = needs_watering(plant.next_water)
@@ -44,6 +45,7 @@ class PlantsView(View):
 
     # plants/models.py
     def put(self, request, id=0):
+        logger.debug(f"updating watering info... at {timezone.localtime()}")
         try:
             plant = Plants.objects.filter(id=id).first()
             print(plant)
