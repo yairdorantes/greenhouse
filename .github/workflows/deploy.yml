@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Send POST request to deployment endpoint
         run: |
-          curl -X POST https://webhook.yairserver.uk/deploy/?project_id=1
+          curl -X POST https://webhook.yairserver.uk/deploy/?project_id=5
