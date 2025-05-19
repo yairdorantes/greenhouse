@@ -23,4 +23,4 @@ EXPOSE 8002
 
 RUN chmod +x /app/wait-for-it.sh
 
-CMD ["sh", "-c", "/app/wait-for-it.sh 192.168.1.9:3306 -- gunicorn greenhouse.wsgi:application --bind 0.0.0.0:8002"]
+CMD ["sh", "-c", "/app/wait-for-it.sh 192.168.1.9:3306 -- && python manage.py collectstatic --noinput && gunicorn greenhouse.wsgi:application --bind 0.0.0.0:8002"]

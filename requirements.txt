@@ -4,3 +4,4 @@ gunicorn
 python-dotenv
 mysqlclient
 mysql-connector-python==9.0.0
+whitenoise
