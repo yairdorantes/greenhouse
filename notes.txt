@@ -1,0 +1,17 @@
+        # plants = Plants.objects.all()
+        # data = []
+        # for plant in plants:
+        #     data.append(
+        #         {
+        #             "id": plant.id,
+        #             "name": plant.name,
+        #             "last_water": timezone.localtime(plant.last_water),
+        #             "next_water": plant.next_water,
+        #         }
+        #     )
+        #     print(needs_watering(plant.next_water))
+
+        # return JsonResponse(data, safe=False)
+
+        -----------
+        

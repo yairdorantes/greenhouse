@@ -1,0 +1,6 @@
+Django
+django-cors-headers==4.7.0
+gunicorn
+python-dotenv
+mysqlclient
+mysql-connector-python==9.0.0
