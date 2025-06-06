@@ -1,6 +1,9 @@
 #!/bin/bash
 # Get git status in short format
 git_status=$(git status --short)
+
+read -p "Which branch to push? " branch
+echo "Pushing to branch $branch"
 #echo $git_status
 # Escape newlines and double quotes for JSON
 escaped_status=$(printf "%s" "$git_status" | sed ':a;N;$!ba;s/\n/\\n/g' | sed 's/"/\\"/g')
@@ -24,6 +27,8 @@ fi
 
 # Commit with the AI-generated message
 git commit -m "$commit_message"
+git push origin $branch
 
 echo "Committed with message:"
 echo "$commit_message"
+
