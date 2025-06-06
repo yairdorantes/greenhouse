@@ -1,19 +1,4 @@
 #!/bin/bash
-
-# diff=$(git diff --cached)
-# commit_msg=$(echo "$diff" | ollama run dolphin3:latest | grep -v '^>' | head -n 5)
-
-# echo -e "\nSuggested commit message:\n\n$commit_msg\n"
-# read -p "Use this message? (y/n): " choice
-# if [[ "$choice" == "y" ]]; then
-#     #git commit -m "$commit_msg"
-#     echo "this the AI text:"
-#     echo $commit_msg
-# else
-#     echo "Commit aborted."
-# fi
-
-
 # Get git status in short format
 git_status=$(git status --short)
 #echo $git_status
