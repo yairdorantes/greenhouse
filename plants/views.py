@@ -29,7 +29,7 @@ def get_client_ip(request):
     return ip
 
 
-# API VIEW DJANG
+# API VIEW DJANGO
 class PlantsView(View):
     def get(self, request, id=0):
 
