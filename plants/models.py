@@ -6,6 +6,9 @@ class Plants(models.Model):
     name = models.CharField(verbose_name="Plant's name", max_length=200)
     last_water = models.DateTimeField()
     next_water = models.DateField()
+    image = models.ImageField(upload_to="plant's_image/", null=True, default=None)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
         return self.name
