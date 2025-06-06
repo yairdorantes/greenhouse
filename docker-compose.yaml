@@ -6,7 +6,7 @@ services:
       - "${DOCKER_PORT}:${DOCKER_PORT}"
     volumes:
       - .:/app
-      - /mnt/SSD240-DRIVE/projects/media/greenhouse/:/app/media/
+      - /mnt/SSD240-DRIVE/projects/media/greenhouse/:/app/media
     restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
