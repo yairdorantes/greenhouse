@@ -13,6 +13,21 @@ class Plants(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        # Check if the image is being replaced
+        if self.pk:
+            old = Plants.objects.get(pk=self.pk)
+            if old.image and old.image != self.image:
+                if os.path.isfile(old.image.path):
+                    os.remove(old.image.path)
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        # Delete the image file when the model is deleted
+        if self.image and os.path.isfile(self.image.path):
+            os.remove(self.image.path)
+        super().delete(*args, **kwargs)
+
 
 class PlantImage(models.Model):
     title = models.CharField(max_length=100, blank=True)
