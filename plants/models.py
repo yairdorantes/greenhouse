@@ -59,3 +59,6 @@ class PlantImage(models.Model):
         if self.image and os.path.isfile(self.image.path):
             os.remove(self.image.path)
         super().delete(*args, **kwargs)
+
+
+# addind a test comemnt here
