@@ -52,7 +52,9 @@ class PlantImage(models.Model):
             if old.image and old.image != self.image:
                 if os.path.isfile(old.image.path):
                     os.remove(old.image.path)
+
         super().save(*args, **kwargs)
+        print(self.image.path)  # This will show the full file path
 
     def delete(self, *args, **kwargs):
         # Delete the image file when the model is deleted
