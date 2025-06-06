@@ -1,6 +1,14 @@
 #!/bin/bash
 # Get git status in short format
+
+caller_path=$(pwd)
+
+echo "****Script was called from: $caller_path****"
+
+cd "$caller_path"
+
 git_status=$(git status --short)
+
 
 read -p "Which branch to push? " branch
 echo "Pushing to branch $branch"
