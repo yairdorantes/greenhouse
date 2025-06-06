@@ -6,3 +6,6 @@ mysqlclient
 mysql-connector-python==9.0.0
 whitenoise
 loguru
+pillow
+
+
